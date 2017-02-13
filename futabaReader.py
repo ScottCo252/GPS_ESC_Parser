@@ -3,7 +3,7 @@ import csv
 
 
 
-def readFutabaCsv():
+def convertFutabaCsv():
     print "Open File!"
 
     gpsLatitude = []
@@ -49,5 +49,14 @@ def readFutabaCsv():
         for i in range(len(gpsTime)):
             outFile.writerow([gpsLatitude[i], gpsLongitude[i], gpsLatLong[i], gpsTime[i]])
 
+def readCsv(filename):
+    csvFile = []
+    with open(filename, 'rb') as csvfile:
+        fileReader = csv.reader(csvfile, delimiter=',')
+        for row in fileReader:
+            csvFile.append(row)
+
+    return csvFile
+
 if __name__ == "__main__":
-    readFutabaCsv()
+    convertFutabaCsv()
